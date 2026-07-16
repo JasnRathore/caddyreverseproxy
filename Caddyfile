@@ -1,0 +1,34 @@
+:80 {
+    root * /var/www/html
+    file_server
+
+    reverse_proxy https://jasnlinuxhome.tailfe429b.ts.net {
+        transport http {
+            tls_server_name jasnlinuxhome.tailfe429b.ts.net
+
+            dial_timeout 10s
+            response_header_timeout 30s
+            read_timeout 30s
+            write_timeout 30s
+        }
+    }
+
+    handle_errors {
+        rewrite * /index.html
+        file_server
+    }
+}
+# http://appointley.jasnrathore.fun {
+#     rewrite * /appointley{path}
+#
+#     reverse_proxy https://jasnlinuxhome.tailfe429b.ts.net {
+#         transport http {
+#             tls_server_name jasnlinuxhome.tailfe429b.ts.net
+#         }
+#     }
+#
+#     handle_errors {
+#         rewrite * /index.html
+#         file_server
+#     }
+# }

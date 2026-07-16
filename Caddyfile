@@ -13,9 +13,7 @@
         }
     }
     
-}
-
-http://appointley.jasnrathore.fun {
+handle http://appointley.jasnrathore.fun {
      rewrite * /appointley{path}
 
      reverse_proxy https://jasnlinuxhome.tailfe429b.ts.net {
@@ -25,6 +23,8 @@ http://appointley.jasnrathore.fun {
      }
     }
 
+}
+    
     handle_errors {
         rewrite * /index.html
         file_server
